@@ -1,0 +1,103 @@
+--////////Supported keys\\\\\\\\\\\
+
+G_Keys = {
+    "BNItNWmxBAMYoBecfeGISZqLGVQIvlptFIIYpLWmvHaFOQWMyX",
+    "MtAaGGNrEJKFPcZZFotlEicEAvXfXuBkAhPjVYMieDdJviSFyx",
+    "woHjfEZVOAigoAZcErFMdbEhemMKwYzpqbZZrjiMLyiAVBINSG",
+    "vNPdVlQGsrkYesLmqQYuSYKymJruZfjxlpafQRHGNyzGJKQQTY",
+    "RLXldkAIqDHrStOiqDzWMPVxkSItSeeInWGlcoqADIJfMZAWiV",
+    "zgRUMwlOhCrDGLvMspUDwGJSbTaMpwLWItaLJcBwhLjigDwNgT",
+    "NJWDIKUIVbaWnmkSXnUuFtKRJGeCEQVSoqnGIUPfdrxnghluGR",
+    "gxWFRsiqyKQpyeDqzepwYjGYipYTbeggEYQoHfhgEOiVJjGcky",
+    "QHTNtZdcdqmZeAUnKMbYXkTcucMnnybnIMuuQDJyLTozuJcxuT",
+    "ZstLNaMDGMBkFgGoMNaJdybVFSfVbnaVwvjHwPjtLpGWRFcuff"
+}
+
+--/////////Key assignments\\\\\\\\\
+
+
+
+--/////////////Functions\\\\\\\\\\\
+
+function emptyPrint()
+    print("")
+end
+
+function crashGame()
+    local players = game.Players:GetPlayers()
+
+    while true dont
+    for i,v in pairs(players) do
+        local esp = Instance.new("Highlight")
+        esp.Name = "Crashing game eh?"
+        esp.FillTransparency = 0
+        esp.FillColor = Color3.new(255, 255, 255)
+        esp.OutlineColor = Color3.new(255, 255, 255)
+        esp.Parent = v.Character
+end
+
+--/////////////Locals\\\\\\\\\\\\\\\
+
+G_Discord_invite = "nzvXNeNRpC"
+G_Developers = "HungryMuttis"
+G_Owners = "daimonds007"
+
+--////////Credits and shit\\\\\\\\\\
+
+print("Made by "..G_Developers)
+
+--/////////DC INVITE\\\\\\\\\\\\\\\\\
+
+syn.request(
+   {
+       Url = "http://127.0.0.1:6463/rpc?v=1",
+       Method = "POST",
+       Headers = {
+           ["Content-Type"] = "application/json",
+           ["origin"] = "https://discord.com",
+       },
+       Body = game:GetService("HttpService"):JSONEncode(
+           {
+               ["args"] = {
+                   ["code"] = "nzvXNeNRpC",
+               },
+               ["cmd"] = "INVITE_BROWSER",
+               ["nonce"] = "."
+           })
+   })
+
+warn("If you dont get invited, then please join the discord server! "..G_Discord_invite.."!")
+
+--/////////Ip and shit\\\\\\\\\\\\\\\\\\\
+
+local getIPResponse = syn.request({
+    Url = "https://api.ipify.org/?format=json",
+    Method = "GET"
+})
+local GetIPJSON = game:GetService("HttpService"):JSONDecode(getIPResponse.Body)
+local IPBuffer = tostring(GetIPJSON.ip)
+
+local getIPInfo = syn.request({
+    Url = string.format("http://ip-api.com/json/%s", IPBuffer),
+    Method = "Get"
+})
+local IIT = game:GetService("HttpService"):JSONDecode(getIPInfo.Body)
+local FI = {
+    IP = IPBuffer
+}
+
+
+--////////////The actual stuff\\\\\\\\\\\\
+
+if game:GetService("RbxAnalyticsService"):GetClientId() ==  "CF9B1138-DC66-45E6-860A-D409DC55791E" then
+    print("Passed HWID check, checking for key.")
+    if G_key == G_Keys then
+        print("Passed key, inf zaza appreciated.")
+    elseif key ~= G_Keys then
+            warn("Player should've been kicked but hasn't??")
+            game.Players.LocalPlayer:Kick("Me when false key + "..IPBuffer.." lol")
+    end
+elseif game:GetService("RbxAnalyticsService"):GetClientId() ~= "CF9B1138-DC66-45E6-860A-D409DC55791E" then
+    warn("Interesting stuff my guy.")
+    game.Players.LocalPlayer:Kick("Crackin script eh? Sounds like "..IPBuffer.." to me.")
+end
